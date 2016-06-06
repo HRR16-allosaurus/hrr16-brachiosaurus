@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import {
   Table,
   TableBody,
@@ -82,11 +83,13 @@ export default class WorkoutTable extends React.Component {
 
   //   // fetch quotes before component is rendered
   componentWillMount() {
-    $.ajax({
-      url: '/api/workouts',
-      dataType: 'json',
-      success: data => console.log(data),
-    });
+    axios.get('/api/workouts')
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (response) {
+        console.log(response);
+      });
   }
 //
 //   fetch quotes via ajax get request

@@ -6,7 +6,7 @@ const autoprefixer = require('autoprefixer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackBrowserPlugin = require('webpack-browser-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const loadBrowse = new WebpackBrowserPlugin();
+// const loadBrowse = new WebpackBrowserPlugin();
 const removeDup = new webpack.optimize.DedupePlugin();
 const extractCSS = new ExtractTextPlugin("style.min.css");
 const minJS = new webpack.optimize.UglifyJsPlugin({
@@ -16,14 +16,6 @@ const minJS = new webpack.optimize.UglifyJsPlugin({
 });
 const addHTML = new HtmlWebpackPlugin({
   template: `${source}index.html`,
-  minify: {
-    collapseWhitespace: true,
-    conservativeCollapse: true, // test this
-    html5: true,
-    removeComments: true,
-    sortAttributes: true,
-    sortClassName: true,
-  },
 });
 
 // Configuration settings according to npm command used
@@ -35,7 +27,7 @@ const settings = {
       js: ['babel?presets[]=es2015,presets[]=react'],
       css: ExtractTextPlugin.extract('isomorphic-style', 'css', 'postcss'),
     },
-    plugins: [loadBrowse, extractCSS, addHTML],
+    plugins: [/*loadBrowse*/extractCSS, addHTML],
   },
 
   // npm run build
@@ -45,7 +37,7 @@ const settings = {
       js: ['babel?presets[]=es2015,presets[]=react', 'eslint'],
       css: ExtractTextPlugin.extract('isomorphic-style', 'css', 'postcss'),
     },
-    plugins: [loadBrowse, extractCSS, addHTML, removeDup, minJS],
+    plugins: [/*loadBrowse*/ extractCSS, addHTML, removeDup],
   },
 };
 
