@@ -10,7 +10,8 @@ require('./styles/style.css');
 ReactDOM.render((
   <Router history={browserHistory}>
     <Route component={App}>
-      <Route path="/" component={Workout} />
+      <Route path="/" component={PromptBox} />
+      <Route path="workout" component={Workout} />
     </Route>
   </Router>
 ), document.getElementById('app'));
