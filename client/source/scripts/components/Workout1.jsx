@@ -1,22 +1,18 @@
 import React from 'react';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import Nav from './header.jsx';
+import WorkoutTable from './WorkoutTable.jsx';
 
-class App extends React.Component {
+class Workout extends React.Component {
   render() {
     return (
       <MuiThemeProvider muiTheme={getMuiTheme()}>
         <div>
-          <Nav />
-          {this.props.children}
+          <WorkoutTable />
         </div>
       </MuiThemeProvider>
     );
   }
 }
 
-App.propTypes = {
-  children: React.PropTypes.object.isRequired,
-};
-export default App;
+export default Workout;

@@ -10,6 +10,17 @@ import {
 }
   from 'material-ui/Table';
 
+// const styles = {
+//   propContainer: {
+//     width: 200,
+//     overflow: 'hidden',
+//     margin: '20px',
+//   },
+//   propToggleHeader: {
+//     margin: '20px auto 10px',
+//   },
+// };
+
 export default class WorkoutTable extends React.Component {
 
   constructor(props) {
@@ -27,54 +38,34 @@ export default class WorkoutTable extends React.Component {
       height: '400px',
       tableData: [
         {
-          day: 'Monday',
-          exercise1: 'Bench Press / 5 sets of 6 reps',
-          exercise2: 'Incline Barbell Press / 4 sets of 10 reps',
-          exercise3: 'Dumbbell Fly / 4 sets of 10 reps',
-          exercise4: 'Cable Crossover / 5 sets of 12 reps',
-          exercise5: 'Push-ups / 4 sets of 10 reps',
+          name: 'John Smith',
+          status: 'Employed',
+          selected: true,
         },
         {
-          day: 'Tuesday',
-          exercise1: 'Pullups / 4 sets as many as you can ',
-          exercise2: 'Barbell Row / 4 sets of 10 reps',
-          exercise3: 'Seated Cable Row / 4 sets of 12 reps',
-          exercise4: 'Machine Lat Pulldown / 4 sets of 12 reps',
-          exercise5: 'Dumbbell One Arm Row / 4 sets of 8 reps',
+          name: 'Randal White',
+          status: 'Unemployed',
         },
         {
-          day: 'Wednesday',
-          exercise1: 'Barbell Squats / 5 sets of 8 reps',
-          exercise2: 'Machine Leg Press / 5 sets of 12 reps',
-          exercise3: 'Dumbbell Lunges / 4 sets of 8 reps per leg',
-          exercise4: 'Barbell Romanian Deadlift / 4 sets of 6 reps',
-          exercise5: 'Machine Leg Curl / 3 sets of 12 reps',
+          name: 'Stephanie Sanders',
+          status: 'Employed',
+          selected: true,
         },
         {
-          day: 'Thursday',
-          exercise1: 'Standing Barbell Military Press / 4 sets of 8 reps',
-          exercise2: 'Dumbbell Lateral Raise / 4 sets of 10 reps',
-          exercise3: 'Machine Rear Raise / 4 sets of 12 reps',
-          exercise4: 'Front Plate Raise / 3 sets of 10 reps',
-          exercise5: 'Arnold Press / 4 sets of 10 reps',
+          name: 'Steve Brown',
+          status: 'Employed',
         },
         {
-          day: 'Friday',
-          exercise1: 'Close Grip Bench Press / 4 sets of 8 reps',
-          exercise2: 'Barbell Curl / 4 sets of 10 reps',
-          exercise3: 'Dumbbell Extension / 4 sets of 10 reps',
-          exercise4: 'Seated Preacher Curl / 4 sets of 8 reps',
-          exercise5: 'Cable Pushdown superset with Cable Curl / 4 sets of 10 reps',
+          name: 'Joyce Whitten',
+          status: 'Employed',
         },
         {
-          day: 'Saturday',
-          exercise1: 'Push-ups / 5 sets of 10 reps',
-          exercise2: 'Pull-ups / 5 sets as many as you can',
-          exercise3: 'Treadmill / 60 minutes',
+          name: 'Samuel Roberts',
+          status: 'Employed',
         },
         {
-          day: 'Sunday',
-          exercise1: 'Rest',
+          name: 'Adam Moore',
+          status: 'Employed',
         },
       ],
     };
@@ -90,12 +81,27 @@ export default class WorkoutTable extends React.Component {
     this.setState({ height: event.target.value });
   }
 
+  //   // fetch quotes before component is rendered
   componentWillMount() {
-    axios.get('/api/workouts/hard')
-      .then(function (response) {
-        console.log(response);
-      });
+    // axios.get('/api/workouts')
+      // .then(function (response) {
+      //   console.log(response);
+      // })
+      // .catch(function (response) {
+      //   console.log(response);
+      // });
   }
+
+  // grabs the resulting quotes from state, iterates over all of them and
+  // creates a new quote instance for each one
+  // _renderQuotes() {
+  //   console.log(this.state.quotes);
+  //   return this.state.quotes.map(quote =>
+  //     <Quote
+  //       author={quote.author} body={quote.body} key={quote.id}
+  //     />
+  //   );
+  // }
 
   render() {
     return (
@@ -113,7 +119,7 @@ export default class WorkoutTable extends React.Component {
           >
             <TableRow>
               <TableHeaderColumn
-                colSpan="6" tooltip="Super Header"
+                colSpan="7" tooltip="Super Header"
                 style={{ textAlign: 'center' }}
               >
                 Weekly Workout Routine
@@ -126,6 +132,7 @@ export default class WorkoutTable extends React.Component {
               <TableHeaderColumn tooltip="Exercise">Exercise 3</TableHeaderColumn>
               <TableHeaderColumn tooltip="Exercise">Exercise 4</TableHeaderColumn>
               <TableHeaderColumn tooltip="Exercise">Exercise 5</TableHeaderColumn>
+              <TableHeaderColumn tooltip="Exercise">Exercise 6</TableHeaderColumn>
             </TableRow>
           </TableHeader>
           <TableBody
@@ -136,12 +143,9 @@ export default class WorkoutTable extends React.Component {
           >
             {this.state.tableData.map((row, index) => (
               <TableRow key={index} selected={row.selected}>
-                <TableRowColumn>{row.day}</TableRowColumn>
-                <TableRowColumn>{row.exercise1}</TableRowColumn>
-                <TableRowColumn>{row.exercise2}</TableRowColumn>
-                <TableRowColumn>{row.exercise3}</TableRowColumn>
-                <TableRowColumn>{row.exercise4}</TableRowColumn>
-                <TableRowColumn>{row.exercise5}</TableRowColumn>
+                <TableRowColumn>{index}</TableRowColumn>
+                <TableRowColumn>{row.name}</TableRowColumn>
+                <TableRowColumn>{row.status}</TableRowColumn>
               </TableRow>
             ))}
           </TableBody>
@@ -150,3 +154,40 @@ export default class WorkoutTable extends React.Component {
     );
   }
 }
+
+
+
+// class Main extends React.Component {
+//   constructor(props) {
+//     super(props);
+//
+//     // set initial state of component
+//     this.state = {
+//       quotes: [
+//         {
+//           id: 1,
+//           author: 'Oscar Wilde',
+//           body: 'Always forgive your enemies; nothing annoys them so much.',
+//           tags: ['advice', 'annoyance', 'forgiveness', 'people'],
+//           words: 9,
+//           published: '05/23/2014',
+//           pictures: [
+//             'http://img.quotery.com/pictures/2013/11/forgive-your-enemies.jpg',
+//           ],
+//         },
+//       ],
+//     };
+//   }
+//
+//
+//   render() {
+//     const quotes = this._renderQuotes() || [];
+//     return (
+//       <main className="o-container">
+//         {quotes}
+//       </main>
+//     );
+//   }
+// }
+//
+// export default Main;
