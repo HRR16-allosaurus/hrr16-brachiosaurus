@@ -28,49 +28,48 @@ export default class WorkoutTable extends React.Component {
       tableData: [
         {
           day: 'Monday',
-          exercise1: 'Bench Press / 5 sets of 6 reps',
-          exercise2: 'Incline Barbell Press / 4 sets of 10 reps',
-          exercise3: 'Dumbbell Fly / 4 sets of 10 reps',
-          exercise4: 'Cable Crossover / 5 sets of 12 reps',
-          exercise5: 'Push-ups / 4 sets of 10 reps',
+          exercise1: 'Treadmill / 30 minutes',
+          exercise2: 'Barbell Bench Press / 3 sets of 10 reps',
+          exercise3: 'Dumbbell Fly / 4 sets of 12 reps',
+          exercise4: 'Machine Chest Press / 3 sets of 12 reps',
+          exercise5: 'Treadmill / 45 minutes',
         },
         {
           day: 'Tuesday',
-          exercise1: 'Pullups / 4 sets as many as you can ',
-          exercise2: 'Barbell Row / 4 sets of 10 reps',
-          exercise3: 'Seated Cable Row / 4 sets of 12 reps',
-          exercise4: 'Machine Lat Pulldown / 4 sets of 12 reps',
-          exercise5: 'Dumbbell One Arm Row / 4 sets of 8 reps',
+          exercise1: 'Treadmill / 30 minutes',
+          exercise2: 'Machine Lat Pulldown / 4 sets of 10 reps',
+          exercise3: 'Dumbbell One Arm Row / 4 sets of 8 reps',
+          exercise4: 'Machine Row / 3 sets of 10 reps',
+          exercise5: 'Rowing Machine / 30 minutes',
         },
         {
           day: 'Wednesday',
-          exercise1: 'Barbell Squats / 5 sets of 8 reps',
-          exercise2: 'Machine Leg Press / 5 sets of 12 reps',
-          exercise3: 'Dumbbell Lunges / 4 sets of 8 reps per leg',
-          exercise4: 'Barbell Romanian Deadlift / 4 sets of 6 reps',
-          exercise5: 'Machine Leg Curl / 3 sets of 12 reps',
+          exercise1: 'Treadmill / 30 minutes',
+          exercise2: 'Barbell Squat / 4 sets of 10 reps',
+          exercise3: 'Dumbbell Lunge / 4 sets of 12 reps',
+          exercise4: 'Machine Leg Press / 4 sets of 15 reps',
+          exercise5: 'Seated Biking / 30 minutes',
         },
         {
           day: 'Thursday',
-          exercise1: 'Standing Barbell Military Press / 4 sets of 8 reps',
-          exercise2: 'Dumbbell Lateral Raise / 4 sets of 10 reps',
-          exercise3: 'Machine Rear Raise / 4 sets of 12 reps',
-          exercise4: 'Front Plate Raise / 3 sets of 10 reps',
-          exercise5: 'Arnold Press / 4 sets of 10 reps',
+          exercise1: 'Treadmill / 30 minutes',
+          exercise2: 'Seated Dumbbell Shoulder Press / 4 sets of 8 reps',
+          exercise3: 'Dumbbell Lateral Raise / 4 sets of 10 reps',
+          exercise4: 'Machine Shoulder Press / 4 sets of 12 reps',
+          exercise5: 'Treadmill / 60 minutes',
         },
         {
           day: 'Friday',
-          exercise1: 'Close Grip Bench Press / 4 sets of 8 reps',
+          exercise1: 'Treadmill / 30 minutes',
           exercise2: 'Barbell Curl / 4 sets of 10 reps',
-          exercise3: 'Dumbbell Extension / 4 sets of 10 reps',
-          exercise4: 'Seated Preacher Curl / 4 sets of 8 reps',
-          exercise5: 'Cable Pushdown superset with Cable Curl / 4 sets of 10 reps',
+          exercise3: 'Dumbbell Hammer Curl / 4 sets of 12 reps',
+          exercise4: 'Barbell Skullcrusher / 4 sets of 10 reps',
+          exercise5: 'Cable Rope Pushdown / 4 sets of 12 reps',
         },
         {
           day: 'Saturday',
-          exercise1: 'Push-ups / 5 sets of 10 reps',
-          exercise2: 'Pull-ups / 5 sets as many as you can',
-          exercise3: 'Treadmill / 60 minutes',
+          exercise1: 'Treadmill / 60 minutes',
+          exercise2: 'Seated Biking / 30 minutes',
         },
         {
           day: 'Sunday',
@@ -91,7 +90,7 @@ export default class WorkoutTable extends React.Component {
   }
 
   componentWillMount() {
-    axios.get('/api/workouts/hard')
+    axios.get('/api/workouts/weightloss')
       .then(function (response) {
         console.log(response);
       });

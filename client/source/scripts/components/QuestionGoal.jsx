@@ -1,5 +1,7 @@
 import React from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
+import axios from 'axios';
+import { Link } from 'react-router';
 
 const styleButton = {
   margin: 12,
@@ -7,10 +9,11 @@ const styleButton = {
 
 
 class QuestionGoal extends React.Component {
-  
+
   handleClickMuscle() {
     this.props.answer.goal = 'Build Muscle';
     this.checkAnswers();
+    console.log(this.props.answer);
   }
 
   handleClickFat() {
@@ -25,20 +28,33 @@ class QuestionGoal extends React.Component {
                     gender === 'Male' && goal === 'Lose Fat' ? 'Send the Normal Workout' :
                     gender === 'Female' && goal === 'Build Muscle' ? 'Send the Easy workout' :
                     'Send the Fat Loss Workout';
+    if (result === 'Send the Hard Workout') {
+      axios.get('/api/workouts/hard').then(response => console.log(response));
+    } else if (result === 'Send the Normal Workout') {
+      axios.get('/api/workouts/normal').then(response => console.log(response));
+    } else if (result === 'Send the Easy workout') {
+      axios.get('/api/workouts/easy').then(response => console.log(response));
+    } else if (result === 'Send the Fat Loss Workout') {
+      axios.get('/api/workouts/weightloss').then(response => console.log(response));
+    }
   }
 
   render() {
     return (
       <div>
         <h2>What is your goal?</h2>
-        <RaisedButton
-          onClick={this.handleClickMuscle.bind(this)}
-          label="Build Muscle" primary style={styleButton}
-        />
-        <RaisedButton
-          onClick={this.handleClickFat.bind(this)}
-          label="Lose Fat" secondary style={styleButton}
-        />
+        <Link to="/workout1">
+          <RaisedButton
+            onClick={this.handleClickMuscle.bind(this)}
+            label="Build Muscle" primary style={styleButton}
+          />
+        </Link>
+        <Link to="/workout2">
+          <RaisedButton
+            onClick={this.handleClickFat.bind(this)}
+            label="Lose Fat" secondary style={styleButton}
+          />
+        </Link>
       </div>
     );
   }
