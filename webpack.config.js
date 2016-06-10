@@ -24,14 +24,14 @@ const minJS = new webpack.optimize.UglifyJsPlugin({
 });
 const addHTML = new HtmlWebpackPlugin({
   template: `${source}index.html`,
-  minify: {
-    collapseWhitespace: true,
-    conservativeCollapse: true, // test this
-    html5: true,
-    removeComments: true,
-    sortAttributes: true,
-    sortClassName: true,
-  },
+  // minify: {
+  //   collapseWhitespace: true,
+  //   conservativeCollapse: true, // test this
+  //   html5: true,
+  //   removeComments: true,
+  //   sortAttributes: true,
+  //   sortClassName: true,
+  // },
 });
 
 // Configuration settings according to npm command used
@@ -53,7 +53,7 @@ const settings = {
       js: ['babel?presets[]=es2015,presets[]=react', 'eslint'],
       css: ExtractTextPlugin.extract('isomorphic-style', 'css', 'postcss'),
     },
-    plugins: [extractCSS, addHTML, removeDup, minJS],
+    plugins: [extractCSS, addHTML, removeDup], // minJS
   },
 };
 
