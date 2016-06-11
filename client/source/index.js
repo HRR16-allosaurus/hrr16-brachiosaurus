@@ -14,9 +14,9 @@ require('./styles/style.css');
 ReactDOM.render((
   <Router history={browserHistory}>
     <Route component={App}>
-      <Route path="/" component={PromptBox} />
-      <Route path="workout1" component={Workout} />
-      <Route path="workout2" component={Workout2} />
+      <Route path="/" component={CreateWorkout} />
+      {/*<Route path="workout1" component={Workout} />*/}
+      {/*<Route path="workout2" component={Workout2} />*/}
       <Route path="/create" component={CreateWorkout} />
       <Route path="/account" component={Account} />
     </Route>

@@ -1,13 +1,14 @@
 import React from 'react';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import NavLink from './NavLink.js'
-import Nav from './header.jsx';
+import NavLink from './NavLink.js';
+import Navbar from 'react-bootstrap/lib/Navbar';
+import NavItem from 'react-bootstrap/lib/NavItem';
+import Nav from 'react-bootstrap/lib/Nav';
+import MenuItem from 'react-bootstrap/lib/MenuItem';
+import NavDropdown from 'react-bootstrap/lib/N'
 
 class App extends React.Component {
   render() {
     return (
-      <MuiThemeProvider muiTheme={getMuiTheme()}>
       <div>
         <ul role="nav">
           <li><NavLink to="/">Home</NavLink></li>
@@ -16,8 +17,7 @@ class App extends React.Component {
         </ul>
         {this.props.children}
       </div>
-      </MuiThemeProvider>
-    );
+      );
   }
 }
 
