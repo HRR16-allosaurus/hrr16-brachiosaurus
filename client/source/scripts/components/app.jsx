@@ -1,5 +1,4 @@
 import React from 'react';
-import NavLink from './NavLink.js';
 import Navbar from 'react-bootstrap/lib/Navbar';
 import NavItem from 'react-bootstrap/lib/NavItem';
 import Nav from 'react-bootstrap/lib/Nav';
@@ -13,9 +12,9 @@ class App extends React.Component {
       <div>
         <Navbar inverse>
           <Navbar.Header>
-            <Navbar.Brand>
-              <a href="/">Pocket Trainer</a>
-            </Navbar.Brand>
+            <LinkContainer to="/">
+              <Navbar.Brand>Pocket Trainer</Navbar.Brand>
+            </LinkContainer>
             <Navbar.Toggle />
           </Navbar.Header>
           <Navbar.Collapse>
