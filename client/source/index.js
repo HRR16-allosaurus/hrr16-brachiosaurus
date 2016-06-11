@@ -7,7 +7,7 @@ import Workout from './scripts/components/Workout1.jsx';
 import Workout2 from './scripts/components/Workout2.jsx';
 import CreateWorkout from './scripts/components/CreateWorkout.jsx';
 import Auth from './scripts/components/Auth.jsx';
-import Account from './scripts/components/Account.jsx'
+import Account from './scripts/components/Account.jsx';
 require('./styles/style.css');
 
 // // This is the new component for the Workout. This will need to be modified to use React-Router
