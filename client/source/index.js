@@ -8,6 +8,8 @@ import Workout2 from './scripts/components/Workout2.jsx';
 import CreateWorkout from './scripts/components/CreateWorkout.jsx';
 import Auth from './scripts/components/Auth.jsx';
 import Account from './scripts/components/Account.jsx';
+import Stripe from './scripts/components/PaymentForm.jsx';
+
 require('./styles/style.css');
 
 // // This is the new component for the Workout. This will need to be modified to use React-Router
@@ -19,6 +21,7 @@ ReactDOM.render((
       {/*<Route path="workout2" component={Workout2} />*/}
       <Route path="/create" component={CreateWorkout} />
       <Route path="/account" component={Account} />
+      <Route path="payment" component={Stripe} /> 
     </Route>
   </Router>
 ), document.getElementById('app'));
