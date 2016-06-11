@@ -43,8 +43,8 @@ class App extends React.Component {
             </LinkContainer>
           </Nav>
           <Nav pullRight>
-            <NavItem eventKey={1} onSelect={this.showLock}>Login</NavItem>
-            <NavItem eventKey={2} onSelect={this.showLock}>Signup</NavItem>
+            <NavItem eventKey={1} onSelect={this.showLock.bind(this)}>Login</NavItem>
+            <NavItem eventKey={2} onSelect={this.showLock.bind(this)}>Signup</NavItem>
           </Nav>
           </Navbar.Collapse>
         </Navbar>
