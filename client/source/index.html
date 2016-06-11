@@ -4,27 +4,30 @@
   <meta charset="UTF-8">
   <title>Pocket Trainer</title>
   <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500' rel='stylesheet'>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap-theme.min.css">
 </head>
 <body>
-<div id="app"></div>
-<script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
-<script>
-  var config = {
-    apiKey: "AIzaSyChAccCDDMXTZF1NtTE8DEmNByym7Fjxz4",
-    authDomain: "pocket-trainer-e754d.firebaseapp.com",
-    databaseURL: "https://pocket-trainer-e754d.firebaseio.com",
-    storageBucket: "",
-  };
+  <div id="app"></div>
+  <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+  <script>
+    var config = {
+      apiKey: "AIzaSyChAccCDDMXTZF1NtTE8DEmNByym7Fjxz4",
+      authDomain: "pocket-trainer-e754d.firebaseapp.com",
+      databaseURL: "https://pocket-trainer-e754d.firebaseio.com",
+      storageBucket: "",
+    };
 
   // authorize firebase access and initialize database
   var database = firebase.initializeApp(config).database();
 </script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react-dom.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-rc1/jquery.min.js"></script>
-  <!-- Auth0Lock script -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-bootstrap/<version>/react-bootstrap.min.js"></script>
+<!-- Auth0Lock script -->
 <script src="//cdn.auth0.com/js/lock-9.1.min.js"></script>
-
 <!-- Setting the right viewport -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, uer-scalable=no" />
 </body>
