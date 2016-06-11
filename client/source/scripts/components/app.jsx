@@ -9,6 +9,13 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 class App extends React.Component {
+  componentWillMount() {
+    this.lock = new Auth0Lock('toGUh2lDkLQ1FUJxqkUp16VDlur8M1WI', 'hrr16brachiosaurus.auth0.com');
+  }
+  showLock() {
+    console.log(this.lock);
+    this.lock.show();
+  }
   render() {
     return (
       <MuiThemeProvider muiTheme={getMuiTheme()}>
@@ -36,8 +43,8 @@ class App extends React.Component {
             </LinkContainer>
           </Nav>
           <Nav pullRight>
-            <NavItem eventKey={1} href="/signin">Login</NavItem>
-            <NavItem eventKey={1} href="/signin">Signup</NavItem>
+            <NavItem eventKey={1} onSelect={this.showLock}>Login</NavItem>
+            <NavItem eventKey={2} onSelect={this.showLock}>Signup</NavItem>
           </Nav>
           </Navbar.Collapse>
         </Navbar>
@@ -51,4 +58,5 @@ class App extends React.Component {
 App.propTypes = {
   children: React.PropTypes.object.isRequired,
 };
+
 export default App;

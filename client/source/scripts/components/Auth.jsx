@@ -39,3 +39,5 @@ var Auth = React.createClass({
     }
   }
 });
+
+export default Auth;
