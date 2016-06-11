@@ -15,5 +15,5 @@ app.get('/api/workouts/hard', (req, res) => db.helpers.getVal(db.ref.workoutHard
 app.get('/api/workouts/weightloss', (req, res) => db.helpers.getVal(db.ref.weightloss, res));
 app.get('*', (req, res) => res.sendFile(path.join(`${__dirname}/../client/build/index.html`)));
 
-app.listen(port, () => console.log('Server running on port 3000!'));
+app.listen(port, () => console.log('Server running on port ' + port));
 module.exports = app;
