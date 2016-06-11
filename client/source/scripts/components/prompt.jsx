@@ -34,8 +34,6 @@ class PromptBox extends React.Component {
       <div>
         <Paper className="prompt-background" style={stylePaper} zDepth={3}>
           <div>
-            <QuestionGender answer={this.state.answer} />
-            <QuestionAge answer={this.state.answer} />
             <QuestionGoal answer={this.state.answer} />
           </div>
         </Paper>
