@@ -6,7 +6,7 @@ const PaymentForm = React.createClass({
 
   getInitialState() {
     return {
-      stripeLoading: true,
+      stripeLoading: false,
       stripeLoadingError: false,
       submitDisabled: false,
       paymentError: null,
@@ -15,50 +15,52 @@ const PaymentForm = React.createClass({
     };
   },
 
-  getScriptURL() {
-    return 'https://js.stripe.com/v2/';
-  },
-
-  onScriptLoaded() {
-    if (!PaymentForm.getStripeToken) {
-      // Put your publishable key here
-      Stripe.setPublishableKey('pk_test_xxxx');
-
-      this.setState({ stripeLoading: false, stripeLoadingError: false });
-    }
-  },
-
-  onScriptError() {
-    this.setState({ stripeLoading: false, stripeLoadingError: true });
-  },
-
   onSubmit(event) {
     const self = this;
     event.preventDefault();
-    this.setState({ submitDisabled: true, paymentError: null });
-    // send form here
-    Stripe.createToken(event.target, (status, response) => {
-      if (response.error) {
-        self.setState({ paymentError: response.error.message, submitDisabled: false });
-      }
-      else {
-        self.setState({ paymentComplete: true, submitDisabled: false, token: response.id });
-        // make request to your server here!
+    this.setState({ submitDisabled: true, paymentError: null});
+
+      Stripe.createToken(event.target, (status, response) => {
+        if (response.error) {
+          self.setState({ paymentError: response.error.message, submitDisabled: false });
+        }
+        else {
+          self.setState({stripeLoading: true, token: response.id});
+        
+          $.ajax({
+              url: '/stripe',
+              contentType: 'application/json',
+              type: 'POST',
+              data: JSON.stringify({
+                token: this.state.token,
+              }),
+              success: function(result){
+                var result = JSON.parse(result);
+                if(result.error){
+                  self.setState({ paymentError:"Payment Error", stripeLoading: false});
+                } 
+                if(result.success){
+                self.setState({ paymentComplete: true, stripeLoading: false});
+                }
+              },
+              error: function(result){
+                console('Cannot communicate to server');
+              }
+          });
+        
       }
     });
   },
 
   render() {
-    // if (this.state.stripeLoading) {
-    //   return <div>Loading</div>;
-    // }
-    // else if (this.state.stripeLoadingError) {
-    //   return <div>Error</div>;
-    // }
-    // else if (this.state.paymentComplete) {
-    //   return <div>Payment Complete!</div>;
-    // }
-
+    if (this.state.stripeLoading) {
+      return <div>Processing...</div>;
+    }
+    
+    if (this.state.paymentComplete) {
+      return <div>Payment Complete!</div>;
+    }
+    
       return (<form onSubmit={this.onSubmit} >
         <span>{ this.state.paymentError }</span><br />
         <input type='text' data-stripe='number' placeholder='credit card number' /><br />
@@ -67,7 +69,6 @@ const PaymentForm = React.createClass({
         <input type='text' data-stripe='cvc' placeholder='cvc' /><br />
         <input disabled={this.state.submitDisabled} type='submit' value='Purchase' />
       </form>);
-    
   }
 });
 

@@ -69,6 +69,7 @@
     "react-router-bootstrap": "^0.23.0",
     "react-tap-event-plugin": "^1.0.0",
     "redux": "^3.5.2",
+    "stripe": "^4.7.0",
     "webpack": "^1.13.1",
     "webpack-browser-plugin": "^1.0.6",
     "webpack-merge": "^0.13.0"
