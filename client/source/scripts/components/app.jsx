@@ -11,33 +11,33 @@ class App extends React.Component {
   render() {
     return (
       <div>
-<Navbar inverse>
-    <Navbar.Header>
-      <Navbar.Brand>
-        <a href="/">Pocket Trainer</a>
-      </Navbar.Brand>
-      <Navbar.Toggle />
-    </Navbar.Header>
-    <Navbar.Collapse>
-      <Nav>
-      <LinkContainer to="/">
-        <NavItem eventKey={1}>Home</NavItem>
-      </LinkContainer>
-      <LinkContainer to="/account">
-        <NavItem eventKey={2}>Account</NavItem>
-      </LinkContainer>
-      </Nav>
-      <Nav pullRight>
-        <NavItem eventKey={1} href="/signin">Login</NavItem>
-        <NavItem eventKey={1} href="/signin">Signup</NavItem>
-      </Nav>
-    </Navbar.Collapse>
-  </Navbar>
-  {this.props.children}
-  </div>
-      );
+        <Navbar inverse>
+          <Navbar.Header>
+            <Navbar.Brand>
+              <a href="/">Pocket Trainer</a>
+            </Navbar.Brand>
+            <Navbar.Toggle />
+          </Navbar.Header>
+          <Navbar.Collapse>
+          <Nav>
+            <LinkContainer to="/">
+              <NavItem eventKey={1}>Home</NavItem>
+            </LinkContainer>
+            <LinkContainer to="/account">
+              <NavItem eventKey={2}>Account</NavItem>
+            </LinkContainer>
+          </Nav>
+          <Nav pullRight>
+            <NavItem eventKey={1} href="/signin">Login</NavItem>
+            <NavItem eventKey={1} href="/signin">Signup</NavItem>
+          </Nav>
+          </Navbar.Collapse>
+        </Navbar>
+        {this.props.children}
+      </div>
+    );
   };
-}
+};
 
 App.propTypes = {
   children: React.PropTypes.object.isRequired,
