@@ -7,7 +7,7 @@ const PaymentForm = React.createClass({
   getInitialState() {
     return {
       stripeLoading: true,
-      stripeLoadingError: false,
+      stripeLoadingError: true,
       submitDisabled: false,
       paymentError: null,
       paymentComplete: false,
@@ -22,8 +22,7 @@ const PaymentForm = React.createClass({
   onScriptLoaded() {
     if (!PaymentForm.getStripeToken) {
       // Put your publishable key here
-      Stripe.setPublishableKey('pk_test_xxxx');
-
+      Stripe.setPublishableKey('pk_test_LIdnwiIbBXe0tFM0JIDyjitV');
       this.setState({ stripeLoading: false, stripeLoadingError: false });
     }
   },
@@ -49,26 +48,29 @@ const PaymentForm = React.createClass({
   },
 
   render() {
-    // if (this.state.stripeLoading) {
-    //   return <div>Loading</div>;
-    // }
-    // else if (this.state.stripeLoadingError) {
-    //   return <div>Error</div>;
-    // }
-    // else if (this.state.paymentComplete) {
-    //   return <div>Payment Complete!</div>;
-    // }
-
-      return (<form onSubmit={this.onSubmit} >
+    if (this.state.stripeLoading) {
+       console.log(this.state);
+       return <div>Loading</div>;
+     }
+     else if (this.state.stripeLoadingError) {
+       return <div>Error</div>;
+     }
+    if (this.state.paymentComplete) {
+      return <div>Payment Complete!</div>;
+    }
+    else {
+      return (<form onSubmit={this.onSubmit}>
         <span>{ this.state.paymentError }</span><br />
         <input type='text' data-stripe='number' placeholder='credit card number' /><br />
         <input type='text' data-stripe='exp-month' placeholder='expiration month' /><br />
         <input type='text' data-stripe='exp-year' placeholder='expiration year' /><br />
         <input type='text' data-stripe='cvc' placeholder='cvc' /><br />
         <input disabled={this.state.submitDisabled} type='submit' value='Purchase' />
-      </form>);
-    
-  }
+        </form>);
+    }
 });
 
 export default PaymentForm;
+
+
+
