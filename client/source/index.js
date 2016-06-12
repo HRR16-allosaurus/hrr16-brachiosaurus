@@ -9,8 +9,10 @@ import CreateWorkout from './scripts/components/CreateWorkout.jsx';
 import Auth from './scripts/components/Auth.jsx';
 import Account from './scripts/components/Account.jsx';
 import Stripe from './scripts/components/PaymentForm.jsx';
+import injectTapEventPlugin from 'react-tap-event-plugin';
 
 require('./styles/style.css');
+injectTapEventPlugin();
 
 // // This is the new component for the Workout. This will need to be modified to use React-Router
 ReactDOM.render((
