@@ -5,10 +5,13 @@ import Nav from 'react-bootstrap/lib/Nav';
 import MenuItem from 'react-bootstrap/lib/MenuItem';
 import NavDropdown from 'react-bootstrap/lib/NavDropdown';
 import { LinkContainer } from 'react-router-bootstrap';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 class App extends React.Component {
   render() {
     return (
+      <MuiThemeProvider muiTheme={getMuiTheme()}>
       <div>
         <Navbar inverse>
           <Navbar.Header>
@@ -25,8 +28,11 @@ class App extends React.Component {
             <LinkContainer to="/workout">
               <NavItem eventKey={3}>Workout!</NavItem>
             </LinkContainer>
-            <LinkContainer to="/account">
-              <NavItem eventKey={2}>Account</NavItem>
+            <LinkContainer to="/payments">
+              <NavItem eventKey={2}>Payments</NavItem>
+            </LinkContainer>
+            <LinkContainer to="/prompt">
+              <NavItem eventKey={3}>Pre-Made Workout</NavItem>
             </LinkContainer>
           </Nav>
           <Nav pullRight>
@@ -37,6 +43,7 @@ class App extends React.Component {
         </Navbar>
         {this.props.children}
       </div>
+      </MuiThemeProvider>
     );
   };
 };
