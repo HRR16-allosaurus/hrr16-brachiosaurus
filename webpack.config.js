@@ -50,7 +50,7 @@ const settings = {
   build: {
     filename: 'bundle.min.js',
     loaders: {
-      js: ['babel?presets[]=es2015,presets[]=react', 'eslint'],
+      js: ['babel?presets[]=es2015,presets[]=react'],
       css: ExtractTextPlugin.extract('isomorphic-style', 'css', 'postcss'),
     },
     plugins: [extractCSS, addHTML, removeDup], // minJS
@@ -58,6 +58,7 @@ const settings = {
 };
 
 module.exports = {
+  devtool: 'inline-source-map', // line numbers for errors
   entry: source,
   output: {
     path: `${__dirname}/client/build/`,
