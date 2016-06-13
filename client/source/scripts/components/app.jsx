@@ -35,6 +35,7 @@ class App extends React.Component {
 
   logout() {
     localStorage.removeItem('userToken');
+    this.setState({token: null});
   }
 
   render() {
