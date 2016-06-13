@@ -21,7 +21,7 @@ class App extends React.Component {
     Auth.createLock();
     this.lock = Auth.getLock();
     this.setState({
-      token: Auth.getIdToken()
+      idToken: Auth.getIdToken()
     });
   }
 
@@ -32,14 +32,13 @@ class App extends React.Component {
 
   logout() {
     localStorage.removeItem('userToken');
-    this.setState({token: null});
+    this.setState({idToken: null});
     history.pushState(null, null, '/');
   }
 
   //Shows a component or null based upon existence of localstorage token
   showOnAuthentication(component) {
-    console.log(component);
-    if(!this.state.token){
+    if(!this.state.idToken){
       return null;
     } else {
       return component;
@@ -73,10 +72,10 @@ class App extends React.Component {
             </LinkContainer>)}
           </Nav>
           <Nav pullRight>
-            { !this.state.token ? 
+            { !this.state.idToken ? 
               (<NavItem eventKey={1} onSelect={this.login}>Login</NavItem>) :
               (<NavItem eventKey={1} onSelect={this.logout}>Logout</NavItem>)}
-            { !this.state.token ? 
+            { !this.state.idToken ? 
               (<NavItem eventKey={2} onSelect={this.login}>Signup</NavItem>) :
               (null)}
           </Nav>
