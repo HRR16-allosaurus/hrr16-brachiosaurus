@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import { Router, Route, browserHistory } from 'react-router';
 import App from './scripts/components/app.jsx';
 import PromptBox from './scripts/components/prompt.jsx';
-import Workout from './scripts/components/Workout1.jsx';
-import Workout2 from './scripts/components/Workout2.jsx';
+import WorkoutTable from './scripts/components/WorkoutTable.jsx';
+import WorkoutTable2 from './scripts/components/WorkoutTable2.jsx';
 import CreateWorkout from './scripts/components/CreateWorkout.jsx';
 import StartWorkout from './scripts/components/start_workout/StartWorkout.jsx';
 import Auth from './scripts/components/Auth.jsx';
@@ -20,12 +20,13 @@ ReactDOM.render((
   <Router history={browserHistory}>
     <Route component={App}>
       <Route path="/" component={CreateWorkout} />
-      {/*<Route path="workout1" component={Workout} />*/}
-      {/*<Route path="workout2" component={Workout2} />*/}
+      <Route path="/prompt" component={PromptBox} />
+      <Route path="/workout1" component={WorkoutTable} />
+      <Route path="/workout2" component={WorkoutTable2} />
       <Route path="/create" component={CreateWorkout} />
       <Route path="/workout" component={StartWorkout} />
       <Route path="/account" component={Account} />
-      <Route path="payment" component={Stripe} /> 
+      <Route path="/payments" component={Stripe} /> 
     </Route>
   </Router>
 ), document.getElementById('app'));
