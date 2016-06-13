@@ -7,10 +7,7 @@ import NavDropdown from 'react-bootstrap/lib/NavDropdown';
 import { LinkContainer } from 'react-router-bootstrap';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-<<<<<<< f73bdb7a1f2904da7801d589badb08a6e992b48e
 import Auth from './Auth.js'
-=======
->>>>>>> Small syntax error fixed
 
 class App extends React.Component {
   constructor() {
@@ -36,6 +33,17 @@ class App extends React.Component {
   logout() {
     localStorage.removeItem('userToken');
     this.setState({token: null});
+    history.pushState(null, null, '/');
+  }
+
+  //Shows a component or null based upon existence of localstorage token
+  showOnAuthentication(component) {
+    console.log(component);
+    if(!this.state.token){
+      return null;
+    } else {
+      return component;
+    }
   }
 
   render() {
@@ -54,15 +62,15 @@ class App extends React.Component {
             <LinkContainer to="/">
               <NavItem eventKey={1}>Home</NavItem>
             </LinkContainer>
-            <LinkContainer to="/workout">
+            {this.showOnAuthentication(<LinkContainer to="/workout">
               <NavItem eventKey={3}>Workout!</NavItem>
-            </LinkContainer>
-            <LinkContainer to="/payments">
+            </LinkContainer>)}
+            {this.showOnAuthentication(<LinkContainer to="/payments">
               <NavItem eventKey={2}>Payments</NavItem>
-            </LinkContainer>
-            <LinkContainer to="/prompt">
+            </LinkContainer>)}
+            {this.showOnAuthentication(<LinkContainer to="/prompt">
               <NavItem eventKey={3}>Pre-Made Workout</NavItem>
-            </LinkContainer>
+            </LinkContainer>)}
           </Nav>
           <Nav pullRight>
             { !this.state.token ? 
