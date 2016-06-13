@@ -7,15 +7,33 @@ import NavDropdown from 'react-bootstrap/lib/NavDropdown';
 import { LinkContainer } from 'react-router-bootstrap';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import Auth from './Auth.js'
 
 class App extends React.Component {
-  componentWillMount() {
-    this.lock = new Auth0Lock('toGUh2lDkLQ1FUJxqkUp16VDlur8M1WI', 'hrr16brachiosaurus.auth0.com');
+  constructor() {
+    super();
+    this.login = this.login.bind(this);
+    this.logout = this.logout.bind(this);
   }
-  showLock() {
-    console.log(this.lock);
+
+  componentWillMount() {
+    Auth.setupAjax();
+    Auth.createLock();
+    this.lock = Auth.getLock();
+    this.setState({
+      token: Auth.getIdToken()
+    });
+  }
+
+  login() {
+    var context = this;
     this.lock.show();
   }
+
+  logout() {
+    localStorage.removeItem('userToken');
+  }
+
   render() {
     return (
       <MuiThemeProvider muiTheme={getMuiTheme()}>
@@ -43,8 +61,12 @@ class App extends React.Component {
             </LinkContainer>
           </Nav>
           <Nav pullRight>
-            <NavItem eventKey={1} onSelect={this.showLock.bind(this)}>Login</NavItem>
-            <NavItem eventKey={2} onSelect={this.showLock.bind(this)}>Signup</NavItem>
+            { !this.state.token ? 
+              (<NavItem eventKey={1} onSelect={this.login}>Login</NavItem>) :
+              (<NavItem eventKey={1} onSelect={this.logout}>Logout</NavItem>)}
+            { !this.state.token ? 
+              (<NavItem eventKey={2} onSelect={this.login}>Signup</NavItem>) :
+              (null)}
           </Nav>
           </Navbar.Collapse>
         </Navbar>

@@ -7,7 +7,7 @@ import WorkoutTable from './scripts/components/WorkoutTable.jsx';
 import WorkoutTable2 from './scripts/components/WorkoutTable2.jsx';
 import CreateWorkout from './scripts/components/CreateWorkout.jsx';
 import StartWorkout from './scripts/components/start_workout/StartWorkout.jsx';
-import Auth from './scripts/components/Auth.jsx';
+import Auth from './scripts/components/Auth.js';
 import Account from './scripts/components/Account.jsx';
 import Stripe from './scripts/components/PaymentForm.jsx';
 import injectTapEventPlugin from 'react-tap-event-plugin';
