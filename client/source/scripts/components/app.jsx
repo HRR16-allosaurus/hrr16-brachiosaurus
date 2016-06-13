@@ -7,7 +7,10 @@ import NavDropdown from 'react-bootstrap/lib/NavDropdown';
 import { LinkContainer } from 'react-router-bootstrap';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
+<<<<<<< f73bdb7a1f2904da7801d589badb08a6e992b48e
 import Auth from './Auth.js'
+=======
+>>>>>>> Small syntax error fixed
 
 class App extends React.Component {
   constructor() {
