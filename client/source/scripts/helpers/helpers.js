@@ -1,14 +1,25 @@
 import axios from 'axios';
 
 const helpers = {
-  postData: function(data, callback) {
-    console.log(data)
+  postData: (data, callback) => {
+    // console.log(data)
     axios.post('/new_workout', data)
       .then(function (response) {
-        console.log(response);
+        // console.log(response);
         callback(response);
       })
       .catch(function (response) {
+        console.log(response);
+      });
+  },
+  
+  getWorkout: (callback) => {
+    // console.log('executing getWorkout');
+    axios.get('/new_workout')
+      .then( response => {
+        callback(response);
+      })
+      .catch( response => {
         console.log(response);
       });
   },

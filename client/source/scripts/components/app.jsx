@@ -22,6 +22,9 @@ class App extends React.Component {
             <LinkContainer to="/">
               <NavItem eventKey={1}>Home</NavItem>
             </LinkContainer>
+            <LinkContainer to="/workout">
+              <NavItem eventKey={3}>Workout!</NavItem>
+            </LinkContainer>
             <LinkContainer to="/account">
               <NavItem eventKey={2}>Account</NavItem>
             </LinkContainer>
