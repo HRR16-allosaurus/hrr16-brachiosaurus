@@ -59,8 +59,11 @@ class App extends React.Component {
           <Navbar.Collapse>
           <Nav>
             <LinkContainer to="/">
-              <NavItem eventKey={1}>Home</NavItem>
+              <NavItem eventKey={1} >Home</NavItem>
             </LinkContainer>
+            {this.showOnAuthentication(<LinkContainer to="/create">
+              <NavItem eventKey={2}>Create Workout</NavItem>
+            </LinkContainer>)}
             {this.showOnAuthentication(<LinkContainer to="/workout">
               <NavItem eventKey={3}>Workout!</NavItem>
             </LinkContainer>)}

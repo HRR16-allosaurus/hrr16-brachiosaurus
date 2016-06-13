@@ -24,6 +24,14 @@ var Auth = {
     });
   },
 
+  showOnAuthentication(component){
+    if(!this.state.idToken){
+      return <Home />
+    } else {
+      return component;
+    }
+  },
+
   getIdToken: function() {
     var idToken = localStorage.getItem('userToken');
     var authHash = this.lock.parseHash(window.location.hash);
