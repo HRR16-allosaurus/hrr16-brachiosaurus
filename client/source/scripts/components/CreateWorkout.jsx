@@ -8,6 +8,7 @@ import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import AutoComplete from 'material-ui/AutoComplete';
 import helpers from './../helpers/helpers.js';
+import { Link } from 'react-router';
 
 const styles = {
   paper: {
@@ -98,7 +99,9 @@ class CreateWorkout extends React.Component {
             />
           </Paper>
         ))}
-        <RaisedButton label="Create" style={styles.button} onClick={ this.addWorkout.bind(this) }/>
+        <Link to="/workout">
+          <RaisedButton label="Create" style={styles.button} onClick={ this.addWorkout.bind(this) }/>
+        </Link>
       </Paper>
       </MuiThemeProvider>
     )

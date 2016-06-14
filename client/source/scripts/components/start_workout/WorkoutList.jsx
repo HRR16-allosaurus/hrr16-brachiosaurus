@@ -15,14 +15,27 @@ export default class WorkoutList extends React.Component {
     const { workouts } = this.props;
     // console.log('workouts', this.props.workouts);
     return (
-      <form>
-        <select ref="workoutSelect" onChange={() => {this.onWorkoutChange(this.refs.workoutSelect.value)}}>
-          <option value="null"></option>
-          {workouts.map( workout => (
-            <option value={workout._id} key={workout._id}>{workout.name}</option>
-          ))}
-        </select>
-      </form>  
+      <div style={
+        {
+          display: "inline-block", 
+          width: "25%",
+          marginRight: "20px"
+        }
+      }>
+        <form>
+          <select 
+            className="form-control"
+            style={{width: "100%"}}
+            ref="workoutSelect" 
+            onChange={() => {this.onWorkoutChange(this.refs.workoutSelect.value)}}
+          >
+            <option value="null"></option>
+            {workouts.map( workout => (
+              <option value={workout._id} key={workout._id}>{workout.name}</option>
+            ))}
+          </select>
+        </form>  
+      </div>
     )
     
     
