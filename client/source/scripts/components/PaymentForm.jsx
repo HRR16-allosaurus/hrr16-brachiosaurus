@@ -61,14 +61,18 @@ const PaymentForm = React.createClass({
       return <div>Payment Complete!</div>;
     }
     
-      return (<form onSubmit={this.onSubmit} >
+      return (
+      <div className='container'>
+      <form onSubmit={this.onSubmit} >
         <span>{ this.state.paymentError }</span><br />
         <input type='text' data-stripe='number' placeholder='credit card number' /><br />
         <input type='text' data-stripe='exp-month' placeholder='expiration month' /><br />
         <input type='text' data-stripe='exp-year' placeholder='expiration year' /><br />
         <input type='text' data-stripe='cvc' placeholder='cvc' /><br />
         <input disabled={this.state.submitDisabled} type='submit' value='Purchase' />
-      </form>);
+      </form>
+      </div>
+      );
   }
 });
 
