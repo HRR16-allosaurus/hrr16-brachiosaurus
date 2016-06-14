@@ -62,6 +62,7 @@
     "postcss-loader": "^0.9.1",
     "react": "^15.1.0",
     "react-addons-css-transition-group": "^15.1.0",
+    "react-async-loader": "^0.1.2",
     "react-bootstrap": "^0.29.4",
     "react-dom": "^15.1.0",
     "react-redux": "^4.4.5",
