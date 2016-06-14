@@ -1,15 +1,27 @@
 import React from 'react';
+import WorkoutItem from './WorkoutItem.jsx'
 
 export default class WorkoutSet extends React.Component {
   
+  // constructor() {
+  //   super(props);
+  //   this.state({
+      
+  //   })
+  // }
+  
   render() {
     
-    const { workout } = this.props;
+    const { workout, updateWorkout } = this.props;
     console.log(this.props.workout);
     return (
       <table 
         className="table" 
-        style={{ width: '50%' }}
+        style={
+          { width: '80%',
+            // marginLeft: '20px'
+          }
+        }
       >
         <thead>
           <tr>
@@ -20,16 +32,13 @@ export default class WorkoutSet extends React.Component {
         
         <tbody>
           {workout.workouts.map( exercise => (
-            <tr key={exercise._id}>
-              <td>{exercise.nameOfWorkout}</td>
-              <td>{exercise.setAndRep}</td>
-              <td>
-                <button>Modify</button>
-                <button>Remove</button>
-              </td>            
-            </tr>
+            <WorkoutItem 
+              key={exercise._id}
+              workout_id={workout._id}
+              exercise={exercise}
+              updateWorkout={updateWorkout}
+            />
           ))}
-
         </tbody>
       </table>
     )
