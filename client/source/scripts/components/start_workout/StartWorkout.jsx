@@ -77,7 +77,7 @@ export default class StartWorkout extends React.Component {
     // console.log('hello, start working out');
     
     return (
-      <div 
+      <div className='container'
         style={
           {
             margin: "auto",
