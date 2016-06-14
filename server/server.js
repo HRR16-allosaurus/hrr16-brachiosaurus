@@ -16,6 +16,7 @@ app.use(parser.json());
 // API
 app.post('/new_workout', controller.addWorkout);
 app.get('/new_workout', controller.getWorkouts);
+app.put('/new_workout', controller.updateWorkout);
 
 app.get('/api/workouts', (req, res) => db.helpers.getVal(db.ref.workouts, res));
 app.get('/api/workouts/easy', (req, res) => db.helpers.getVal(db.ref.workoutEasy, res));

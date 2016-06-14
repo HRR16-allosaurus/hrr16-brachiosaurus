@@ -1,6 +1,7 @@
 var db = require('./config.js');
 var Workout = require('./workoutModel.js');
 var mongoose = require('mongoose');
+var _ = require('underscore');
 
 
 module.exports = {
@@ -28,5 +29,50 @@ module.exports = {
           res.status(200).send(workouts);
         }
       })
+  },
+  
+  updateWorkout: function(req, res) {
+    // console.log('backend update being called', req.body)
+    var exerciseId = req.body.exercise_id;
+    var newExercise = req.body.newExercise;
+    var newSet = req.body.newSetAndRep;
+    
+    Workout.findById(req.body.workout_id, function(err, workout) {
+      if(err) {
+        console.log(err);
+        return;
+      }
+      var exercise = workout.workouts.id(exerciseId);
+      // console.log('@@@@@@@@@@@', exercise);
+      exercise.nameOfWorkout = newExercise;
+      exercise.setAndRep = newSet;
+      // console.log('updated exercise', exercise);
+      exercise.save(function(err) {
+        if(err) {
+          console.log(err);
+        }
+        res.send(workout);
+      })
+    })
+    
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
